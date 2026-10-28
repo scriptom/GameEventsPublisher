@@ -1,2 +1,0 @@
-[Public]
-Object=(Name=GameEventsPublisher.GameEventsMutator,Class=Class,MetaClass=Engine.Mutator,Description="Game Events Publisher")

@@ -1,0 +1,56 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../../development/UT99/Botpack"
+		},
+		{
+			"path": "../../../../development/UT99/Core"
+		},
+		{
+			"path": "../../../../development/UT99/Editor"
+		},
+		{
+			"path": "../../../../development/UT99/Engine"
+		},
+		{
+			"path": "../../../../development/UT99/Fire"
+		},
+		{
+			"path": "../../../../development/UT99/IpDrv"
+		},
+		{
+			"path": "../../../../development/UT99/IpServer"
+		},
+		{
+			"path": "../../../../development/UT99/UBrowser"
+		},
+		{
+			"path": "../../../../development/UT99/UMenu"
+		},
+		{
+			"path": "../../../../development/UT99/UnrealI"
+		},
+		{
+			"path": "../../../../development/UT99/UnrealShare"
+		},
+		{
+			"path": "../../../../development/UT99/UTBrowser"
+		},
+		{
+			"path": "../../../../development/UT99/UTMenu"
+		},
+		{
+			"path": "../../../../development/UT99/UTServerAdmin"
+		},
+		{
+			"path": "../../../../development/UT99/UWeb"
+		},
+		{
+			"path": "../../../../development/UT99/UWindow"
+		}
+	],
+	"settings": {}
+}
