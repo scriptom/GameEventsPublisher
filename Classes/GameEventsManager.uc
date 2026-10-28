@@ -2,13 +2,11 @@ class GameEventsManager extends Actor;
 
 var GameEventsConfig Config;
 var class<GameEventsPublisherHelper> Helper;
-var GameEventsPublisherSubmitter Submitter;
 var MatchStartTimedTrigger StartMatchTrigger;
 
 function Setup(GameEventsConfig configuration) {
     Config = configuration;
     Helper = class'GameEventsPublisherHelper';
-    Submitter = Level.Spawn(class'GameEventsPublisherSubmitter');
     StartMatchTrigger = Level.Spawn(class'MatchStartTimedTrigger', Self, 'MatchStart');
 }
 
@@ -37,11 +35,14 @@ function LogInternal(String text) {
 
 function Publish(Name eventName, int instigatorId) {
     local GameEventArgs arg;
+    local GameEventsPublisherSubmitter submitter;
 
     LogInternal("GameEventsManager.Publish(eventName="$eventName$")");
     arg = class'GameEventArgs'.static.Create(Level, eventName, instigatorId);
     class'GameEventArgs'.static.PrintPlayers(arg);
-    Submitter.OpenAndSend(Config.Host, Config.Port, Config.Path, Config.PasswordHeaderName, Config.Password, arg.ConvertToJson(Config.TeamInfoJson, Config.PlayerInfoJson), Config.Debug);
+    // One submitter per event, so a publish can't overwrite one still in flight.
+    submitter = Level.Spawn(class'GameEventsPublisherSubmitter');
+    submitter.OpenAndSend(Config.Host, Config.Port, Config.Path, Config.PasswordHeaderName, Config.Password, arg.ConvertToJson(Config.TeamInfoJson, Config.PlayerInfoJson), Config.Debug);
 }
 
 // function Timer() {
@@ -115,6 +116,5 @@ defaultproperties
 {
       Config=None
       Helper=None
-      Submitter=None
       StartMatchTrigger=None
 }

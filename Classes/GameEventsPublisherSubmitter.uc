@@ -41,13 +41,18 @@ function Resolved(IpAddr Addr) {
   if (BindPort() == 0)
   {
     Log("++ [GameEventsPublisher] Failed to resolve port:"$ipAddrServerIpAddr.Port);
+    Destroy();
     return;
   }
-  Open(ipAddrServerIpAddr);
+  if (!Open(ipAddrServerIpAddr))
+  {
+    Destroy();
+  }
 }
 
 function ResolveFailed() {
     Log("++ [GameEventsPublisher] Failed to resolve ip address:"$sHost);
+    Destroy();
 }
 
 function Disconnect()
@@ -65,6 +70,7 @@ event Opened()
 event Closed()
 {
   Log("++ [GameEventsPublisher] Lost connection to server.");
+  Destroy();
 }
 
 // FUNCTION ProccessInput / Standard Processing Function
