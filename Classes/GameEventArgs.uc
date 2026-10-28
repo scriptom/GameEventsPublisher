@@ -134,7 +134,7 @@ static function GameEventArgs Create(LevelInfo Level, Name stateName, int instig
             playerInfo.Id = p.PlayerReplicationInfo.PlayerID;
             playerInfo.Index = i;
             playerInfo.Team = p.PlayerReplicationInfo.Team;
-            playerInfo.Name = helper.static.Replace(helper.static.Replace(p.PlayerReplicationInfo.PlayerName, " ", "\\t"), "\\", "\b");
+            playerInfo.Name = helper.static.Replace(p.PlayerReplicationInfo.PlayerName, " ", "\\t");
             playerInfo.Score = p.PlayerReplicationInfo.Score;
             playerInfo.DieCount = p.DieCount;
             playerInfo.KillCount = p.KillCount;
