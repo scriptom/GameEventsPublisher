@@ -11,7 +11,8 @@ This repo is not the build environment. It lives inside the UT99 install (the pa
 ## Build
 
 - Compile from the install's `System/` folder with `UCC.exe make`. The package is listed in `EditPackages` (`System/UnrealTournament.ini:650`) and built from `<install>/GameEventsPublisher/Classes/`.
-- Check `System/ucc.log` for `Success - 0 error(s), 0 warnings`.
+- Delete `System/GameEventsPublisher.u` before compiling. `UCC.exe make` skips a package whose `.u` already exists and still reports success, so the build changes nothing.
+- Check `System/ucc.log` for `Success - 0 error(s), 0 warnings`, and for a `Success: Compiled N line(s)` line for `GameEventsPublisher`. A run that compiled nothing has no such line.
 - Restart the server after rebuilding so the new package is loaded.
 
 ## Run and test

@@ -17,6 +17,12 @@ event ReceiveLocalizedMessage(class<LocalMessage> Message, optional int Switch, 
             }
         }
     }
+
+    // Switch 0 is the sudden-death message, sent when the game ends tied
+    if (Message == class'DeathMatchMessage' && Switch == 0)
+    {
+        GameEventsManager(Owner).OvertimeStarted();
+    }
 }
 
 defaultproperties

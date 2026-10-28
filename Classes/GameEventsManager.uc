@@ -4,6 +4,7 @@ var GameEventsConfig Config;
 var class<GameEventsPublisherHelper> Helper;
 var GameEventsPublisherSubmitter Submitter;
 var MatchStartTimedTrigger StartMatchTrigger;
+var bool bOvertimeStarted;
 
 function Setup(GameEventsConfig configuration) {
     Config = configuration;
@@ -18,6 +19,15 @@ function StartMatch() {
 
 function FlagCapture(PlayerReplicationInfo scorerPRI, CTFFlag flag) {
     Publish('FlagCapture', scorerPRI.PlayerId);
+}
+
+// The game can end tied more than once in sudden death, so publish only the first
+function OvertimeStarted() {
+    if (bOvertimeStarted) {
+        return;
+    }
+    bOvertimeStarted = true;
+    Publish('OvertimeStarted', -1);
 }
 
 function Trigger(Actor Other, Pawn EventInstigator) {
