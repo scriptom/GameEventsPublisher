@@ -75,7 +75,7 @@ function string ConvertToJson(String teamInfoJson, String playerInfoJson) {
         playerStr = playerInfoJson;
         playerStr = helper.static.Replace(playerStr, "%Id%", helper.static.CreateJsonPairAsInt("Id", playerInfo.Id));
         playerStr = helper.static.Replace(playerStr, "%Index%", helper.static.CreateJsonPairAsInt("Index", playerInfo.Index));
-        playerStr = helper.static.Replace(playerStr, "%Name%", helper.static.CreateJsonPairAsStringWithEscape("Name", playerInfo.Name));
+        playerStr = helper.static.Replace(playerStr, "%Name%", helper.static.CreateJsonPairAsString("Name", playerInfo.Name));
         playerStr = helper.static.Replace(playerStr, "%Password%", helper.static.CreateJsonPairAsString("Password", playerInfo.Password));
         playerStr = helper.static.Replace(playerStr, "%Team%", helper.static.CreateJsonPairAsInt("Team", playerInfo.Team));
         playerStr = helper.static.Replace(playerStr, "%Ready%", helper.static.CreateJsonPairAsBool("Ready", playerInfo.Ready));
